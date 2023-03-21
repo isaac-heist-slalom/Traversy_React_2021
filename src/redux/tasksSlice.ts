@@ -6,15 +6,18 @@ interface TasksSlice {
   tasks: Task[];
 }
 
+// const urlString = "http://localhost:5001/";
+const urlString = "http://192.168.50.14:5001/";
+
 export const fetchTasks = createAsyncThunk("tasks/fetchTasks", async () => {
-  const res = await fetch("http://localhost:5001/tasks");
+  const res = await fetch(`${urlString}tasks`);
   const data = await res.json();
 
   return data;
 });
 
 const fetchTask = async (id: number) => {
-  const res = await fetch(`http://localhost:5001/tasks/${id}`);
+  const res = await fetch(`${urlString}tasks/${id}`);
   const data: Task = await res.json();
 
   return data;
@@ -25,7 +28,7 @@ export const addTask = createAsyncThunk(
   async (task: AddTask) => {
     const { text, day, reminder } = task;
 
-    const res = await fetch("http://localhost:5001/tasks", {
+    const res = await fetch(`${urlString}tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -44,7 +47,7 @@ export const addTask = createAsyncThunk(
 export const deleteTask = createAsyncThunk(
   "tasks/deleteTask",
   async (id: number) => {
-    await fetch(`http://localhost:5001/tasks/${id}`, {
+    await fetch(`${urlString}tasks/${id}`, {
       method: "DELETE",
     });
 
@@ -57,7 +60,7 @@ export const toggleReminder = createAsyncThunk(
   async (id: number) => {
     const taskToUpdate = await fetchTask(id);
 
-    const data = await fetch(`http://localhost:5001/tasks/${id}`, {
+    const data = await fetch(`${urlString}tasks/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

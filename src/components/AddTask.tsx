@@ -54,7 +54,6 @@ export const AddTask = () => {
         <label>Set Reminder</label>
         <input
           type="checkbox"
-          defaultChecked={false}
           checked={reminder}
           onChange={(e) => setReminder(e.target.checked)}
         />

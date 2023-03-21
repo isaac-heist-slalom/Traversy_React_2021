@@ -15,8 +15,26 @@
     {
       "text": "Breakfast",
       "day": "Feb 5th at 9:00am",
-      "reminder": true,
+      "reminder": false,
       "id": 6
+    },
+    {
+      "text": "Study for Test",
+      "day": "Feb 20th at 7:30pm",
+      "reminder": true,
+      "id": 7
+    },
+    {
+      "text": "Lunch",
+      "day": "Feb 21st at 12:00pm",
+      "reminder": false,
+      "id": 8
+    },
+    {
+      "text": "Read",
+      "day": "Feb 21st at 8:20pm",
+      "reminder": false,
+      "id": 9
     }
   ]
 }

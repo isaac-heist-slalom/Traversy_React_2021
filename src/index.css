@@ -69,6 +69,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  user-select: none;
+}
+
+.task p {
+  user-select: none;
 }
 
 .add-form {

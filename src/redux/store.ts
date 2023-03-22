@@ -1,13 +1,23 @@
-import { configureStore } from "@reduxjs/toolkit";
+import {
+  combineReducers,
+  configureStore,
+  PreloadedState,
+} from "@reduxjs/toolkit";
 import showAddTaskSlice from "./showAddTaskSlice";
 import tasksSlice from "./tasksSlice";
 
-export const store = configureStore({
-  reducer: {
-    showAddTask: showAddTaskSlice,
-    tasks: tasksSlice,
-  },
+const rootReducer = combineReducers({
+  showAddTask: showAddTaskSlice,
+  tasks: tasksSlice,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
+  return configureStore({
+    reducer: rootReducer,
+    preloadedState,
+  });
+};
+
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];

@@ -1,8 +1,7 @@
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { updateShowAddTask } from "../redux/showAddTaskSlice";
 
-type ButtonProps = {
+export type ButtonProps = {
   color?: string;
   text: string;
 };
